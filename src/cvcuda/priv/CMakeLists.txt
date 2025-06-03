@@ -91,7 +91,7 @@ else()
     list(APPEND CV_CUDA_PRIV_FILES ${CV_CUDA_PRIV_OP_FILES})
 endif()
 
-add_library(cvcuda_priv STATIC
+add_library(cvcuda_priv SHARED 
     ${CV_CUDA_PRIV_FILES}
 )
 
@@ -108,3 +108,7 @@ target_link_libraries(cvcuda_priv
         CUDA::cublasLt_static
         -lrt
 )
+
+configure_version(cvcuda_priv CVCUDA_PRIV cvcuda_priv ${PROJECT_VERSION})
+configure_symbol_versioning(cvcuda_priv CVCUDA_PRIV cvcuda_priv)
+setup_dso(cvcuda_priv ${PROJECT_VERSION})
