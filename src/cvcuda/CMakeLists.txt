@@ -129,12 +129,22 @@ target_compile_definitions(cvcuda PRIVATE -DCVCUDA_EXPORTING=1)
 
 # Installer
 
+install(TARGETS cvcuda_priv
+        EXPORT cvcuda_priv
+        COMPONENT lib
+        LIBRARY NAMELINK_COMPONENT dev)
+
 install(TARGETS cvcuda
         EXPORT cvcuda
         COMPONENT lib
         LIBRARY NAMELINK_COMPONENT dev)
 
 install(DIRECTORY include/cvcuda
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        COMPONENT dev
+        FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp")
+
+install(DIRECTORY priv
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         COMPONENT dev
         FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp")
