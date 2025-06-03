@@ -91,7 +91,7 @@ else()
     list(APPEND CV_CUDA_PRIV_FILES ${CV_CUDA_PRIV_OP_FILES})
 endif()
 
-add_library(cvcuda_priv STATIC
+add_library(cvcuda_priv SHARED 
     ${CV_CUDA_PRIV_FILES}
 )
 

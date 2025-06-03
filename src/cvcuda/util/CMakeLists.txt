@@ -15,7 +15,7 @@
 
 find_package(CUDAToolkit REQUIRED)
 
-add_library(cvcuda_util STATIC
+add_library(cvcuda_util SHARED 
     Event.cpp
     Stream.cpp
     StreamId.cpp
